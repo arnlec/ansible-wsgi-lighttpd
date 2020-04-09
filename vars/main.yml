@@ -1,0 +1,4 @@
+---
+# vars file for ansible-wsgi-lighttpd
+
+app_path: "/opt/{{app_name}}"

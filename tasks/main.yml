@@ -1,0 +1,6 @@
+---
+# tasks file for ansible-wsgi-lighttpd
+
+- import_tasks: python.yml
+- import_tasks: lighttpd.yml
+- import_tasks: application.yml

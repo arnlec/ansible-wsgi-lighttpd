@@ -1,0 +1,8 @@
+---
+# handlers file for ansible-wsgi-lighttpd
+
+
+- name: restart lighttpd
+  systemd:
+    name: lighttpd
+    state: restarted

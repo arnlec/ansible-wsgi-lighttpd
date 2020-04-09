@@ -1,0 +1,27 @@
+---
+
+- name: create application folder
+  file:
+    path: "{{app_path}}"
+    state: directory
+
+- name: install python package
+  pip:
+    name:
+      - flup
+      - "{{app_name}}"
+    state: present
+    virtualenv: "{{app_path}}"
+
+- name: generate FastCGI server file
+  template:
+    src: app.fcgi.j2
+    dest: "{{app_path}}/app.fcgi"
+    mode: 0755
+  notify: restart lighttpd
+
+- name: configure lighttpd
+  template:
+    src: app.conf.j2
+    dest: "/etc/lighttpd/conf-enabled/90-{{app_name}}.conf"
+  notify: restart lighttpd

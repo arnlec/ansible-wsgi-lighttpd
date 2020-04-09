@@ -1,0 +1,20 @@
+---
+
+- name: install python
+  apt:
+    name: "python{{python_version}}"
+    update_cache: yes
+    state: latest
+
+- name: install python tools
+  apt:
+    name:
+      - "python{{python_version}}-pip"
+      - python-virtualenv
+    state: latest
+
+- name: set python default version
+  alternatives:
+    name: python
+    path: "/usr/bin/python{{python_version}}"
+    link: /usr/bin/python

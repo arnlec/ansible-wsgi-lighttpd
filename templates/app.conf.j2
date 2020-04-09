@@ -1,0 +1,13 @@
+fastcgi.server = ("/{{app_name}}.fcgi" =>
+    ((
+        "socket" => "/tmp/{{app_name}}_fcgi.sock",
+        "bin-path" => "{{app_path}}/app.fcgi",
+        "check-local" => "disable",
+        "max-procs" => 1
+    ))
+)
+
+
+url.rewrite-once = (
+    "^/{{app_name}}(/.*)$" => "/{{app_name}}.fcgi$1"
+)

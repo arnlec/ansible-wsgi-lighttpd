@@ -1,0 +1,22 @@
+---
+
+- name: install lighttpd server
+  apt:
+    name: lighttpd
+    state: latest
+
+- name: start lighttpd server
+  systemd:
+    name: lighttpd server
+    state: started
+    enabled: yes
+
+- name: load lighttpd modules
+  file:
+    src: "/etc/lighttpd/conf-available/{{item}}.conf"
+    dest: "/etc/lighttpd/conf-enabled/{{item}}.conf"
+    state: link
+  with_items:
+    - 10-fastcgi
+    - 10-rewrite
+  notify: restart lighttpd
