@@ -1,7 +1,11 @@
 #!{{app_path}}/bin/python
 
 from flup.server.fcgi import WSGIServer
-from {{module_name}} import {{server_name}} as main
-
+from {{module_name}} import {{server_name}} as init
+{% if config_path is defined %}
+server = init('{{config_path}}')
+{% else %}
+server = init()
+{% endif %}
 if __name__ == '__main__':
-    WSGIServer(main).run()
+    WSGIServer(server).run()
