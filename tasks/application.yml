@@ -10,7 +10,7 @@
     name:
       - flup
       - "{{app_name}}"
-    state: present
+    state: latest
     virtualenv: "{{app_path}}"
 
 - name: generate FastCGI server file
