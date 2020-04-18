@@ -7,7 +7,7 @@
 
 - name: start lighttpd server
   systemd:
-    name: lighttpd server
+    name: lighttpd
     state: started
     enabled: yes
 
