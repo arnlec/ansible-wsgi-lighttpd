@@ -12,6 +12,7 @@ Role Variables
 --------------
 
 - app_name: python package name
+- app_version: application version number (optional: install latest version if not defined)
 - module_name: module name to import in fcgi script 
 - init_function: init function 
 - python_version: default python version (default: 3)

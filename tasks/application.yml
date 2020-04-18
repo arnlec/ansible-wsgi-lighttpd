@@ -12,6 +12,19 @@
       - "{{app_name}}"
     state: latest
     virtualenv: "{{app_path}}"
+  when: app_version is not defined
+
+- name: install python package
+  pip:
+    name:
+      - flup
+      - "{{app_name}}"
+    state: latest
+    version: "{{app_version}}"
+    virtualenv: "{{app_path}}"
+  when: app_version is defined
+
+
 
 - name: generate FastCGI server file
   template:
