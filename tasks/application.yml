@@ -13,6 +13,7 @@
     state: latest
     virtualenv: "{{app_path}}"
   when: app_version is not defined
+  notify: restart lighttpd
 
 - name: install python package
   pip:
@@ -23,6 +24,7 @@
     version: "{{app_version}}"
     virtualenv: "{{app_path}}"
   when: app_version is defined
+  notify: restart lighttpd
 
 
 
