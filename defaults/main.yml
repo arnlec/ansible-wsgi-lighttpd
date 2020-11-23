@@ -2,5 +2,5 @@
 # defaults file for ansible-wsgi-lighttpd
 
 python_version: 3
-
+logging_level: ERROR
 

@@ -16,6 +16,7 @@ Role Variables
 - module_name: module name to import in fcgi script 
 - init_function: init function 
 - python_version: default python version (default: 3)
+- logging_level (default: ERROR)
 
 Dependencies
 ------------

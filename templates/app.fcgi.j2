@@ -1,7 +1,14 @@
 #!{{app_path}}/bin/python
-
+import logging
 from flup.server.fcgi import WSGIServer
 from {{module_name}} import {{init_function}} as init
+
+logging.basicConfig(
+    filename='{{logging_filename}}',
+    filemode='a',
+    level=logging.{{logging_level}}
+)
+
 {% if config_path is defined %}
 server = init('{{config_path}}')
 {% else %}

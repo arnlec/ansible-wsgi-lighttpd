@@ -26,7 +26,12 @@
   when: app_version is defined
   notify: restart lighttpd
 
-
+- name: create log folder
+  file:
+    path: "/var/log/{{app_name}}"
+    state: directory
+    owner: www-data
+    group: www-data
 
 - name: generate FastCGI server file
   template:
@@ -40,3 +45,5 @@
     src: app.conf.j2
     dest: "/etc/lighttpd/conf-enabled/90-{{app_name}}.conf"
   notify: restart lighttpd
+
+

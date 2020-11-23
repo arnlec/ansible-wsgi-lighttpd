@@ -2,3 +2,4 @@
 # vars file for ansible-wsgi-lighttpd
 
 app_path: "/opt/{{app_name}}"
+logging_filename: "/var/log/{{app_name}}/app.log"
